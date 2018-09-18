@@ -68,6 +68,7 @@ public class AccessFilter extends BaseFilter {
      */
     @Override
     public Object run() throws ZuulException {
+    	/*
         logger.info("AccessFilter PRE 0");
 
         RequestContext requestContext = RequestContext.getCurrentContext();
@@ -89,6 +90,7 @@ public class AccessFilter extends BaseFilter {
                 logger.info("Authorization校验成功");
             }
         }
+        */
         return null;
     }
 
