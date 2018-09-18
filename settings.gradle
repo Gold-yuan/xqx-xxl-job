@@ -1,0 +1,12 @@
+rootProject.name = 'xqx-xxl-job'
+
+
+include 'xqx-base'
+include 'xqx-gateway'
+include 'xqx-job1'
+include 'xqx-job2'
+include 'xqx-job3'
+include 'xqx-job4'
+include 'xqx-job5'
+include 'xqx-job-handler'
+
