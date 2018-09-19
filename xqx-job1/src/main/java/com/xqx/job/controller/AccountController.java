@@ -22,13 +22,16 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
-	@RequestMapping(value = "/accounts/transfer", method = RequestMethod.POST)
+	@RequestMapping(value = "/accounts/transfer", method = RequestMethod.GET)
 	public String transferA2A(@RequestParam("money") String money, @RequestParam("accountName") String accountName) {
 		logger.info("A接收请求：accountName={}, money={}", accountName, money);
 		// 我是A只能转给B，让B代转
 		// TODO 通知B转账给C
-		accountService.sendToNext(id, accountName, money);
-		
+		try {
+			accountService.sendToNext(id, accountName, money);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// TODO 立即执行该job
 		accountService.executeSendToNextJob();
 		

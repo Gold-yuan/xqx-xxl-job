@@ -1,7 +1,9 @@
-package com.xxl.tx.handler;
+package com.xxl.tx.e.handler;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import com.xxl.job.core.biz.model.ReturnT;
@@ -9,7 +11,6 @@ import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.tx.pojo.ReceivePO;
-import com.xxl.tx.util.HttpClientUtils;
 
 /**
  * 任务Handler示例（Bean模式）
@@ -22,32 +23,27 @@ import com.xxl.tx.util.HttpClientUtils;
  * @author xuxueli 2015-12-19 19:43:36
  */
 /**
- * 此类为执行类
+ * 此类为录入数据类
  */
-@JobHandler(value = "ExecuteAJobHandler")
+@JobHandler(value = "ReceiveEHandler")
 @Component
-public class ExecuteAJobHandler extends IJobHandler {
+public class ReceiveEHandler extends IJobHandler {
+	public static List<ReceivePO> dataCache = new ArrayList<>();
 
+	/**
+	 * @param param json格式入参，如：{"accountName":"E", "money", "100", "id", 2}
+	 */
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
-		Iterator<ReceivePO> iterator = ReceiveAHandler.dataCache.iterator();
-		while (iterator.hasNext()) {
-			ReceivePO receivePO = iterator.next();
-			if (receivePO.isFinish()) {
-				continue;
-			} else {
-				XxlJobLogger.log("开始执行任务" + receivePO.getData());
-				// TODO 项目B的地址
-				String url = "http://localhost:8091/xqx-job1/accounts/transfer" + receivePO.getData();
-				HttpClientUtils client = HttpClientUtils.getInstance();
-				String resp = client.sendHttpGet(url);
-				if ("success".equals(resp)) {
-					receivePO.setFinish(true);
-				} else {
-					receivePO.setFinish(false);
-				}
-			}
+		if (StringUtils.isBlank(param)) {
+			XxlJobLogger.log("参数为空，返回");
+			return SUCCESS;
 		}
+		XxlJobLogger.log("已接收到请求：" + param);
+		ReceivePO receive = new ReceivePO(param);
+		// TODO 改为入库操作
+		dataCache.add(receive);
+
 		return SUCCESS;
 	}
 }

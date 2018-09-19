@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @ComponentScan 自动扫描该包下的handler
  */
 @Configuration
-@ComponentScan(basePackages = "com.xxl.tx.job")
+@ComponentScan(basePackages = "com.xxl.tx")
 public class XxlJobConfig {
 	private Logger logger = LoggerFactory.getLogger(XxlJobConfig.class);
 
