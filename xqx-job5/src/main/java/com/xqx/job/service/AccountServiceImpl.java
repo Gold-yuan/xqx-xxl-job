@@ -15,7 +15,7 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void finishToPre(long id, String accountName, String money) {
 		String jobHandler = "ReceiveStatusDHandler";
-		String params = money+"-"+accountName;
+		String params = "?money="+money+"&accountName="+accountName+"&id="+id;
 
         // trigger data
         TriggerParam triggerParam = new TriggerParam();
@@ -31,18 +31,18 @@ public class AccountServiceImpl implements AccountService{
         ExecutorBiz executorBiz = null;
 		try {
 			executorBiz = (ExecutorBiz) new NetComClientProxy(ExecutorBiz.class, "127.0.0.1:9995", null).getObject();
+			executorBiz.run(triggerParam);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        executorBiz.run(triggerParam);
 	}
 
 	@Override
 	public void executeFinishToPreJob() {
-		String address = "http://9.186.54.96:9060/";
+		String address = "http://9.186.54.96:9060/".concat(AdminBiz.MAPPING);
     	try {
 			AdminBiz adminBiz = (AdminBiz) new NetComClientProxy(AdminBiz.class, address, null).getObject();
-			adminBiz.triggerJob(10);
+			adminBiz.triggerJob(17);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

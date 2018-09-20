@@ -18,6 +18,7 @@ public class AccountController {
 	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 	private static Map<Long, Long> finishTme = new HashMap<>();
 	private static long id = 0;
+	private static long thisId;
 	
 	@Autowired
 	private AccountService accountService;
@@ -34,22 +35,21 @@ public class AccountController {
 		}
 		// TODO 立即执行该job
 		accountService.executeSendToNextJob();
-		
-		finishTme.put(id++, System.currentTimeMillis());
+		thisId = id++;
+		finishTme.put(thisId, System.currentTimeMillis());
 
 		return "ok";
 	}
 
-	@RequestMapping(value = "/accounts/finish", method = RequestMethod.POST)
+	@RequestMapping(value = "/accounts/finish", method = RequestMethod.GET)
 	public String finishTransferA2A(@RequestParam("id") Long id, @RequestParam("money") String money,
 			@RequestParam("accountName") String accountName) {
 		logger.info("A收到B完成转账消息：accountName={}, money={}", accountName, money);
 
 		long now = System.currentTimeMillis();
-		long startTransferA2ATime = finishTme.get(id);
+		long startTransferA2ATime = finishTme.get(thisId);
 		long usedTime = now - startTransferA2ATime;
-		
-		logger.info("id={}使用时间：{}ms", id, usedTime);
+		logger.info("id={}使用时间：{}ms", thisId, usedTime);
 		
 		return "ok";
 	}

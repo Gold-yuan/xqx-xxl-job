@@ -17,7 +17,7 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
-	@RequestMapping(value = "/accounts/transfer", method = RequestMethod.POST)
+	@RequestMapping(value = "/accounts/transfer", method = RequestMethod.GET)
 	public String transferA2A(@RequestParam("id") Long id, @RequestParam("money") String money,
 			@RequestParam("accountName") String accountName) {
 		logger.info("E接收请求：accountName={}, money={}", accountName, money);

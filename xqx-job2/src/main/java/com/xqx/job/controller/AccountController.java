@@ -17,7 +17,7 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
-	@RequestMapping(value = "/accounts/transfer", method = RequestMethod.POST)
+	@RequestMapping(value = "/accounts/transfer", method = RequestMethod.GET)
 	public String transferA2A(@RequestParam("id") Long id, @RequestParam("money") String money,
 			@RequestParam("accountName") String accountName) {
 		logger.info("B接收请求：accountName={}, money={}", accountName, money);
@@ -31,7 +31,7 @@ public class AccountController {
 		return "ok";
 	}
 
-	@RequestMapping(value = "/accounts/finish", method = RequestMethod.POST)
+	@RequestMapping(value = "/accounts/finish", method = RequestMethod.GET)
 	public String finishTransferA2A(@RequestParam("id") Long id, @RequestParam("money") String money,
 			@RequestParam("accountName") String accountName) {
 		logger.info("B收到C完成转账消息：accountName={}, money={}", accountName, money);

@@ -15,7 +15,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void sendToNext(long id, String accountName, String money) {
 		String jobHandler = "ReceiveDHandler";
-        String params = money+"-"+accountName;
+		String params = "?money="+money+"&accountName="+accountName+"&id="+id;
 
         // trigger data
         TriggerParam triggerParam = new TriggerParam();
@@ -39,10 +39,10 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void executeSendToNextJob() {
-		String address = "http://9.186.54.96:9060/";
+		String address = "http://9.186.54.96:9060/".concat(AdminBiz.MAPPING);
     	try {
 			AdminBiz adminBiz = (AdminBiz) new NetComClientProxy(AdminBiz.class, address, null).getObject();
-			adminBiz.triggerJob(8);
+			adminBiz.triggerJob(19);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,9 +51,11 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void finishToPre(long id, String accountName, String money) {
 		String jobHandler = "ReceiveStatusBHandler";
+		String params = "?money="+money+"&accountName="+accountName+"&id="+id;
         // trigger data
         TriggerParam triggerParam = new TriggerParam();
         triggerParam.setExecutorHandler(jobHandler);
+        triggerParam.setExecutorParams(params);
         triggerParam.setExecutorBlockStrategy(ExecutorBlockStrategyEnum.COVER_EARLY.name());
         triggerParam.setGlueType(GlueTypeEnum.BEAN.name());
         triggerParam.setGlueSource(null);
@@ -72,10 +74,10 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void executeFinishToPreJob() {
-		String address = "http://9.186.54.96:9060/";
+		String address = "http://9.186.54.96:9060/".concat(AdminBiz.MAPPING);
     	try {
 			AdminBiz adminBiz = (AdminBiz) new NetComClientProxy(AdminBiz.class, address, null).getObject();
-			adminBiz.triggerJob(12);
+			adminBiz.triggerJob(15);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
