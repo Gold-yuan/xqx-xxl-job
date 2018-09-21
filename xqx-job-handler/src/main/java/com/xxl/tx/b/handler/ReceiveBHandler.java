@@ -17,7 +17,7 @@ import com.xxl.tx.pojo.ReceivePO;
 public class ReceiveBHandler extends IJobHandler{
 	public static List<ReceivePO> dataCache = new ArrayList<>();
 	/**
-	 * @param param json格式入参，如：{"accountName":"E", "money", "100", "id", 2}
+	 * @param param json格式入参，如：param = {"accountName":"E", "money", "100", "id", 2}
 	 */
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {

@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.xxl.job.core.biz.AdminBiz;
 import com.xxl.job.core.biz.ExecutorBiz;
 import com.xxl.job.core.biz.model.TriggerParam;
@@ -19,12 +21,13 @@ public class AccountServiceImpl implements AccountService {
 	public void sendToNext(long id, String accountName, String money){
 		// TODO Auto-generated method stub
 		String jobHandler = "ReceiveBHandler";
+		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("id", id);
 		map.put("money",money);
 		map.put("accountName",accountName);
-		//String  params= JSON.toJSONString(map);
-		String params = "?money="+money+"&accountName="+accountName+"&id="+id;
+		String  params= gson.toJson(map);
+//		String params = "?money="+money+"&accountName="+accountName+"&id="+id;
         // trigger data
         TriggerParam triggerParam = new TriggerParam();
         triggerParam.setExecutorHandler(jobHandler);

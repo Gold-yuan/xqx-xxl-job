@@ -1,7 +1,12 @@
 package com.xqx.job.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.xxl.job.core.biz.AdminBiz;
 import com.xxl.job.core.biz.ExecutorBiz;
 import com.xxl.job.core.biz.model.TriggerParam;
@@ -15,8 +20,12 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void finishToPre(long id, String accountName, String money) {
 		String jobHandler = "ReceiveStatusDHandler";
-		String params = "?money="+money+"&accountName="+accountName+"&id="+id;
-
+		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("id", id);
+		map.put("money",money);
+		map.put("accountName",accountName);
+		String  params= gson.toJson(map);
         // trigger data
         TriggerParam triggerParam = new TriggerParam();
         triggerParam.setExecutorHandler(jobHandler);
