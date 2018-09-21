@@ -1,4 +1,4 @@
-package com.xxl.tx.d.handler;
+package com.xxl.tx.c.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.tx.pojo.ReceivePO;
 
-@JobHandler(value = "ReceiveDHandler")
+@JobHandler(value = "ReceiveBtoCHandler")
 @Component
-public class ReceiveDHandler extends IJobHandler{
+public class ReceiveBtoCHandler extends IJobHandler{
 	public static List<ReceivePO> dataCache = new ArrayList<>();
 	/**
 	 * @param param json格式入参，如：{"accountName":"E", "money", "100", "id", 2}
@@ -33,3 +33,4 @@ public class ReceiveDHandler extends IJobHandler{
 		return SUCCESS;
 	}
 }
+

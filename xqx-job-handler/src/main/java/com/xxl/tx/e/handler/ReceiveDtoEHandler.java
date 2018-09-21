@@ -1,4 +1,4 @@
-package com.xxl.tx.handler;
+package com.xxl.tx.e.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +25,9 @@ import com.xxl.tx.pojo.ReceivePO;
 /**
  * 此类为录入数据类
  */
-@JobHandler(value = "ReceiveAHandler")
+@JobHandler(value = "ReceiveDtoEHandler")
 @Component
-public class ReceiveAHandler extends IJobHandler {
+public class ReceiveDtoEHandler extends IJobHandler {
 	public static List<ReceivePO> dataCache = new ArrayList<>();
 
 	/**

@@ -11,18 +11,22 @@ import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.tx.pojo.ReceivePO;
-
-@JobHandler(value = "ReceiveBHandler")
+/**
+ * 接收状态
+ * @author jjn
+ *
+ */
+@JobHandler(value = "ReceiveCtoBStatusHandler")
 @Component
-public class ReceiveBHandler extends IJobHandler{
+public class ReceiveCtoBStatusHandler extends IJobHandler{
 	public static List<ReceivePO> dataCache = new ArrayList<>();
 	/**
-	 * @param param json格式入参，如：param = {"accountName":"E", "money", "100", "id", 2}
+	 * @param param json格式入参，如：{"accountName":"E", "money", "100", "id", 2}
 	 */
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
 		if (StringUtils.isBlank(param)) {
-			XxlJobLogger.log("参数为空，返回");
+			XxlJobLogger.log("返回值为空，返回");
 			return SUCCESS;
 		}
 		XxlJobLogger.log("已接收到请求：" + param);

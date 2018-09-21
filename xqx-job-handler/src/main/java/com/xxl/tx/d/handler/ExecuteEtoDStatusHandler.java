@@ -1,4 +1,4 @@
-package com.xxl.tx.b.handler;
+package com.xxl.tx.d.handler;
 
 import java.util.Iterator;
 
@@ -11,13 +11,12 @@ import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.tx.pojo.ReceivePO;
 import com.xxl.tx.util.HttpClientUtils;
 
-@JobHandler(value = "ExecuteBJobHandler")
+@JobHandler(value = "ExecuteEtoDStatusHandler")
 @Component
-public class ExecuteBJobHandler extends IJobHandler {
-
+public class ExecuteEtoDStatusHandler extends IJobHandler{
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
-		Iterator<ReceivePO> iterator = ReceiveBHandler.dataCache.iterator();
+		Iterator<ReceivePO> iterator = ReceiveEtoDStatusHandler.dataCache.iterator();
 		while (iterator.hasNext()) {
 			ReceivePO receivePO = iterator.next();
 			if (receivePO.isFinish()) {
@@ -25,7 +24,7 @@ public class ExecuteBJobHandler extends IJobHandler {
 			} else {
 				XxlJobLogger.log("开始执行任务" + receivePO.getData());
 				// TODO 项目B的地址
-				String url = "http://localhost:8092/accounts/transfer" + receivePO.getData();
+				String url = "http://localhost:8094/accounts/finish" + receivePO.getData();
 				HttpClientUtils client = HttpClientUtils.getInstance();
 				String resp = client.sendHttpGet(url);
 				if ("ok".equals(resp)) {
@@ -38,4 +37,3 @@ public class ExecuteBJobHandler extends IJobHandler {
 		return SUCCESS;
 	}
 }
-

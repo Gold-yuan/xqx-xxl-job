@@ -17,12 +17,12 @@ import com.xxl.tx.pojo.ReceivePO;
  * @author jjn
  *
  */
-@JobHandler(value = "ReceiveStatusDHandler")
+@JobHandler(value = "ReceiveEtoDStatusHandler")
 @Component
-public class ReceiveStatusDHandler extends IJobHandler{
+public class ReceiveEtoDStatusHandler extends IJobHandler{
 	public static List<ReceivePO> dataCache = new ArrayList<>();
 	/**
-	 * @param param json格式入参，如：{"status":"success"}
+	 * @param param json格式入参，如：{"accountName":"E", "money", "100", "id", 2}
 	 */
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {

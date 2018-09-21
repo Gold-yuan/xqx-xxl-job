@@ -1,4 +1,4 @@
-package com.xxl.tx.handler;
+package com.xxl.tx.a.handler;
 
 import java.util.Iterator;
 
@@ -11,13 +11,13 @@ import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.tx.pojo.ReceivePO;
 import com.xxl.tx.util.HttpClientUtils;
 
-@JobHandler(value = "ExecuteStatusAHandler")
+@JobHandler(value = "ExecuteBtoAStatusHandler")
 @Component
-public class ExecuteStatusAHandler extends IJobHandler {
+public class ExecuteBtoAStatusHandler extends IJobHandler {
 
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
-		Iterator<ReceivePO> iterator = ReceiveStatusAHandler.dataCache.iterator();
+		Iterator<ReceivePO> iterator = ReceiveBtoAStatusHandler.dataCache.iterator();
 		while (iterator.hasNext()) {
 			ReceivePO receivePO = iterator.next();
 			if (receivePO.isFinish()) {

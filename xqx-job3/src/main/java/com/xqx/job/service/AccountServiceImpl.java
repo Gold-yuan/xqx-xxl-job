@@ -23,7 +23,7 @@ public class AccountServiceImpl implements AccountService {
 	XxlJobConfig config;
 	@Override
 	public void sendToNext(long id, String accountName, String money) {
-		String jobHandler = "ReceiveDHandler";
+		String jobHandler = "ReceiveCtoDHandler";
 		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("id", id);
@@ -63,7 +63,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void finishToPre(long id, String accountName, String money) {
-		String jobHandler = "ReceiveStatusBHandler";
+		String jobHandler = "ReceiveCtoBStatusHandler";
 		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("id", id);

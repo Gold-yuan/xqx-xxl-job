@@ -22,7 +22,7 @@ public class AccountServiceImpl implements AccountService{
 	XxlJobConfig config;
 	@Override
 	public void finishToPre(long id, String accountName, String money) {
-		String jobHandler = "ReceiveStatusDHandler";
+		String jobHandler = "ReceiveEtoDStatusHandler";
 		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("id", id);

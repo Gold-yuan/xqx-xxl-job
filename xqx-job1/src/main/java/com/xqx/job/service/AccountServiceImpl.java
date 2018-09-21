@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void sendToNext(long id, String accountName, String money){
 		// TODO Auto-generated method stub
-		String jobHandler = "ReceiveBHandler";
+		String jobHandler = "ReceiveAtoBHandler";
 		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("id", id);

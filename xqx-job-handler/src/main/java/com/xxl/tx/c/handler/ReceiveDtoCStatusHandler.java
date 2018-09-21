@@ -1,4 +1,4 @@
-package com.xxl.tx.handler;
+package com.xxl.tx.c.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +12,17 @@ import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.tx.pojo.ReceivePO;
 
-@JobHandler(value = "ReceiveStatusAHandler")
+/**
+ * 接收状态
+ * @author jjn
+ *
+ */
+@JobHandler(value = "ReceiveDtoCStatusHandler")
 @Component
-public class ReceiveStatusAHandler extends IJobHandler{
+public class ReceiveDtoCStatusHandler extends IJobHandler{
 	public static List<ReceivePO> dataCache = new ArrayList<>();
 	/**
-	 * @param param json格式入参，如：{"status":"success"}
+	 * @param param json格式入参，如：{"accountName":"E", "money", "100", "id", 2}
 	 */
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
