@@ -3,10 +3,12 @@ package com.xqx.job.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.xqx.job.conf.XxlJobConfig;
 import com.xxl.job.core.biz.AdminBiz;
 import com.xxl.job.core.biz.ExecutorBiz;
 import com.xxl.job.core.biz.model.TriggerParam;
@@ -17,6 +19,8 @@ import com.xxl.job.core.rpc.netcom.NetComClientProxy;
 @Service
 public class AccountServiceImpl implements AccountService {
 
+	@Autowired 
+	XxlJobConfig config;
 	@Override
 	public void sendToNext(long id, String accountName, String money){
 		// TODO Auto-generated method stub
@@ -41,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
         // do remote trigger
         ExecutorBiz executorBiz;
 		try {
-			executorBiz = (ExecutorBiz) new NetComClientProxy(ExecutorBiz.class, "127.0.0.1:9995", null).getObject();
+			executorBiz = (ExecutorBiz) new NetComClientProxy(ExecutorBiz.class, config.getHandlerAddresses(), null).getObject();
 			executorBiz.run(triggerParam);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void executeSendToNextJob() {
 		
-		String address = "http://9.186.54.96:9060/".concat(AdminBiz.MAPPING);
+		String address = config.getAdminAddresses().concat(AdminBiz.MAPPING);
     	try {
 			AdminBiz adminBiz = (AdminBiz) new NetComClientProxy(AdminBiz.class, address, null).getObject();
 			adminBiz.triggerJob(21);

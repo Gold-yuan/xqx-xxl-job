@@ -55,4 +55,36 @@ public class XxlJobConfig {
 		return xxlJobExecutor;
 	}
 
+	public Logger getLogger() {
+		return logger;
+	}
+
+	public String getAdminAddresses() {
+		return adminAddresses;
+	}
+
+	public String getAppName() {
+		return appName;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public String getLogPath() {
+		return logPath;
+	}
+
+	public int getLogRetentionDays() {
+		return logRetentionDays;
+	}
+	
 }
