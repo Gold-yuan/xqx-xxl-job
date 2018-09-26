@@ -218,3 +218,5 @@ xxl.job.executor.logretentiondays = -1       ###日志保存天数，值大于3�
 ![1537855365529](C:\Users\IBM_AD~1\AppData\Local\Temp\1537855365529.png)
 
 #### xqx-job2、xqx-job3、xqx-job4、xqx-job5的配置以及启动方式和xqx-job1相同
+
+![1537933366303](C:\Users\IBM_AD~1\AppData\Local\Temp\1537933366303.png)
