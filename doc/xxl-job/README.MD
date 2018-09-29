@@ -19,7 +19,6 @@ xxl-job-table.sql文件存在于xqx-xxl-job目录doc下xxl-job文件夹下，与
 ![1537867550013](C:\Users\IBM_AD~1\AppData\Local\Temp\1537867550013.png)
 
 
-
 导入步骤
 
 1、输入mysql -u root -p进入到mysql数据库
@@ -60,7 +59,7 @@ xxl-job-admin-0.0.1-SNAPSHOT.jar放到了/home/xxl-job/目录下
 
 3、访问调度中心
 
-	在浏览器地址输入调度中心地址http://9.186.54.96:9060/  使用admin/123456登录
+	在浏览器地址输入调度中心地址http://9.186.54.96:9060/  使用admin/admin登录
 
 ![1537853887614](C:\Users\IBM_AD~1\AppData\Local\Temp\1537853887614.png)
 
@@ -78,7 +77,7 @@ xxl-job-admin-0.0.1-SNAPSHOT.jar放到了/home/xxl-job/目录下
 
 ![1537858176467](C:\Users\IBM_AD~1\AppData\Local\Temp\1537858176467.png)
 
-配置xxl-job-admin相关信息
+__配置xxl-job-admin相关信息__
 
 创建完成之后，点击xxl-job-admin，进入到配置页面。
 
@@ -120,7 +119,7 @@ mybatis.configuration.map-underscore-to-camel-case = true  ###开启驼峰命名
 
 ![1537865010063](C:\Users\IBM_AD~1\AppData\Local\Temp\1537865010063.png)
 
-配置xqx-job-handler相关信息
+__配置xqx-job-handler相关信息__
 
 创建完成之后，点击xqx-job-handler，进入到配置页面。
 
@@ -153,15 +152,11 @@ xxl.job.executor.logretentiondays = -1        ###日志保存天数，值大于3
 
 ```
 
-
-
-
-
 3、创建xqx-job1项目，点击提交，完成创建。
 
 ![1537864342372](C:\Users\IBM_AD~1\AppData\Local\Temp\1537864342372.png)
 
-配置xxl-job-admin相关信息
+__配置xxl-job-admin相关信息__
 
 点击xqx-job1，进入到xqx-job1配置页面
 
@@ -192,9 +187,7 @@ xxl.job.executor.logpath = /data/applogs/xxl-job/jobhandler     ###执行器日�
 xxl.job.executor.logretentiondays = -1       ###日志保存天数，值大于3时生效
 ```
 
-``` 
-创建xqx-job2、xqx-job3、xqx-job4、xqx-job5方式和xqx-job1相同
-```
+__创建xqx-job2、xqx-job3、xqx-job4、xqx-job5方式和xqx-job1相同__
 
 配置文件不同如下：
 
@@ -220,9 +213,7 @@ xxl.job.executor.port=8081 需要修改   ### 例如：xqx-job2：8082； xqx-jo
 
 打开xqx-job-handler项目下src/main/resources->META-INF->app.properties文件
 
-``` 
-app.id的值和apollo创建xqx-job-handler的应用id相对应
-```
+__app.id的值和apollo创建xqx-job-handler的应用id相对应__
 
 ![1537866038598](C:\Users\IBM_AD~1\AppData\Local\Temp\1537866038598.png)
 
@@ -234,9 +225,7 @@ app.id的值和apollo创建xqx-job-handler的应用id相对应
 
 打开xqx-job-handler项目下src/main/resources->META-INF->app.properties文件
 
-``` 
-app.id的值和apollo创建xqx-job1的应用id相对应
-```
+__app.id的值和apollo创建xqx-job1的应用id相对应__
 
 ![1537866423031](C:\Users\IBM_AD~1\AppData\Local\Temp\1537866423031.png)
 
@@ -244,10 +233,8 @@ app.id的值和apollo创建xqx-job1的应用id相对应
 
 ![1537855365529](C:\Users\IBM_AD~1\AppData\Local\Temp\1537855365529.png)
 
-#### 其他相关配置
+### 其他相关配置
 
-```
-xqx-job2、xqx-job3、xqx-job4、xqx-job5的配置以及启动方式和xqx-job1相同
-```
+__xqx-job2、xqx-job3、xqx-job4、xqx-job5的配置以及启动方式和xqx-job1相同__
 
 ![1537933366303](C:\Users\IBM_AD~1\AppData\Local\Temp\1537933366303.png)
