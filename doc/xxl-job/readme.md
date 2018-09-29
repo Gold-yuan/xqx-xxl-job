@@ -8,9 +8,13 @@
 
 # xxl-job-admin安装文档
 
+[TOC]
+
 ### 将xxl-job-table.sql 导入到数据库中
 
+```
 xxl-job-table.sql文件存在于xqx-xxl-job目录doc下xxl-job文件夹下，与readme.md在同目录下。
+```
 
 ![1537867550013](C:\Users\IBM_AD~1\AppData\Local\Temp\1537867550013.png)
 
@@ -40,9 +44,11 @@ xxl-job-table.sql文件存在于xqx-xxl-job目录doc下xxl-job文件夹下，与
 
 1、部署调度分布中心
 
-将xqx-xxl-job目录doc文件夹下的xxl-job-admin-0.0.1-SNAPSHOT.jar包放到服务器中。（我这里以linux为例）
+将xqx-xxl-job目录doc文件夹下的xxl-job-admin-0.0.1-SNAPSHOT.jar包放到服务器中。（我这里以CentOS为例）
 
+```
 xxl-job-admin-0.0.1-SNAPSHOT.jar放到了/home/xxl-job/目录下
+```
 
 ![1537844282718](C:\Users\IBM_AD~1\AppData\Local\Temp\1537844282718.png)
 
@@ -82,6 +88,7 @@ xxl-job-admin-0.0.1-SNAPSHOT.jar放到了/home/xxl-job/目录下
 
 ![1537858883680](C:\Users\IBM_AD~1\AppData\Local\Temp\1537858883680.png)
 
+``` properties
 server.port = 9060           ###调度中心端口号
 
 xxl.job.mail.host = smtp.163.com   ### 报警邮箱服务器
@@ -101,12 +108,13 @@ xxl.job.i18n =                     ###xxl-job-admin i18n 可空
 spring.datasource.url = jdbc:mysql://9.186.54.96:3306/xxl-job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&useSSL=false               ###数据库配置spring.datasource.username = root             ###数据库用户名
 spring.datasource.password = MySqlPass1!    ###数据库密码
 spring.datasource.driver-class-name = com.mysql.jdbc.Driver   ###数据库驱动
-spring.mvc.static-path-pattern = /static/**       ###表示所有的访问都经过静态资源路径
+spring.mvc.static-path-pattern = /static/*       ###表示所有的访问都经过静态资源路径
 spring.mvc.log-resolved-exception = true       ###异常的警告日志记录
 spring.mvc.dispatch-options-request = true   ###将选项请求发送给框架
-mybatis.mapper-locations = classpath:mapper/*.xml        ###扫描xml路径
+mybatis.mapper-locations = classpath:mapper/.xml        ###扫描xml路径
 mybatis.type-aliases-package = com.xxl.job.admin.core.model  ###扫描实体类的路径
 mybatis.configuration.map-underscore-to-camel-case = true  ###开启驼峰命名功能
+```
 
 2、创建xqx-job-handler项目，点击提交，完成创建。
 
@@ -122,6 +130,7 @@ mybatis.configuration.map-underscore-to-camel-case = true  ###开启驼峰命名
 
 ![1537865127244](C:\Users\IBM_AD~1\AppData\Local\Temp\1537865127244.png)
 
+```properties
 server.port = 8096     ###系统端口，访问端口
 
 eureka.client.serviceUrl.defaultZone = http://9.186.54.96:8080/eureka/    ###注册eureka
@@ -142,6 +151,12 @@ xxl.job.executor.logpath = /data/applogs/xxl-job-handler    ###执行器日志�
 
 xxl.job.executor.logretentiondays = -1        ###日志保存天数，值大于3时生效
 
+```
+
+
+
+
+
 3、创建xqx-job1项目，点击提交，完成创建。
 
 ![1537864342372](C:\Users\IBM_AD~1\AppData\Local\Temp\1537864342372.png)
@@ -156,6 +171,7 @@ xxl.job.executor.logretentiondays = -1        ###日志保存天数，值大于3
 
 ![1537864627734](C:\Users\IBM_AD~1\AppData\Local\Temp\1537864627734.png)
 
+``` properties
 server.port = 8091  ###系统端口，访问端口
 
 eureka.client.serviceUrl.defaultZone = http://9.186.54.96:8080/eureka/    ###注册eureka
@@ -174,16 +190,23 @@ xxl.job.accessToken =      ###访问令牌
 xxl.job.executor.logpath = /data/applogs/xxl-job/jobhandler     ###执行器日志路径
 
 xxl.job.executor.logretentiondays = -1       ###日志保存天数，值大于3时生效
+```
 
-##### 创建xqx-job2、xqx-job3、xqx-job4、xqx-job5方式和xqx-job1相同
+``` 
+创建xqx-job2、xqx-job3、xqx-job4、xqx-job5方式和xqx-job1相同
+```
 
 配置文件不同如下：
 
-1、server.port 需要修改  ### 例如：xqx-job2：8092； xqx-job3：8093 等等
+``` properties
+server.port=8081 需要修改  ### 例如：xqx-job2：8092； xqx-job3：8093 等等
 
-2、spring.application.name 需要修改  ### 例如：xqx-job2：xqx-job2； xqx-job3：xqx-job3等等
+spring.application.name=xqx-job1 需要修改  ### 例如：xqx-job2：xqx-job2； xqx-job3：xqx-job3等等
 
-3、xxl.job.executor.port需要修改   ### 例如：xqx-job2：8082； xqx-job3：8083等等
+xxl.job.executor.port=8081 需要修改   ### 例如：xqx-job2：8082； xqx-job3：8083等等
+```
+
+
 
 ### 启动xqx-job以及handler
 
@@ -197,7 +220,9 @@ xxl.job.executor.logretentiondays = -1       ###日志保存天数，值大于3�
 
 打开xqx-job-handler项目下src/main/resources->META-INF->app.properties文件
 
-###### app.id的值和apollo创建xqx-job-handler的应用id相对应
+``` 
+app.id的值和apollo创建xqx-job-handler的应用id相对应
+```
 
 ![1537866038598](C:\Users\IBM_AD~1\AppData\Local\Temp\1537866038598.png)
 
@@ -209,7 +234,9 @@ xxl.job.executor.logretentiondays = -1       ###日志保存天数，值大于3�
 
 打开xqx-job-handler项目下src/main/resources->META-INF->app.properties文件
 
-###### app.id的值和apollo创建xqx-job1的应用id相对应
+``` 
+app.id的值和apollo创建xqx-job1的应用id相对应
+```
 
 ![1537866423031](C:\Users\IBM_AD~1\AppData\Local\Temp\1537866423031.png)
 
@@ -217,6 +244,10 @@ xxl.job.executor.logretentiondays = -1       ###日志保存天数，值大于3�
 
 ![1537855365529](C:\Users\IBM_AD~1\AppData\Local\Temp\1537855365529.png)
 
-#### xqx-job2、xqx-job3、xqx-job4、xqx-job5的配置以及启动方式和xqx-job1相同
+#### 其他相关配置
+
+```
+xqx-job2、xqx-job3、xqx-job4、xqx-job5的配置以及启动方式和xqx-job1相同
+```
 
 ![1537933366303](C:\Users\IBM_AD~1\AppData\Local\Temp\1537933366303.png)
