@@ -25,7 +25,7 @@ xxl-job-table.sql文件存在于xqx-xxl-job目录doc下apollo文件夹下，与r
 3、导入完成后查看导入的表是否导入正确;
 
 ```
-use ApolloPortalDB;
+use ApolloConfigDB;
 
 show tables;
 ```
@@ -43,7 +43,7 @@ show tables;
 查看导入表是否成功
 
 ```
-use ApolloConfigDB;
+use ApolloPortalDB;
 
 show tables;
 ```
