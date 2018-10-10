@@ -68,7 +68,21 @@ show tables;
 
 ![1537869047190](C:\Users\IBM_AD~1\AppData\Local\Temp\1537869047190.png)
 
-其他解压后的文件也相同
+**其他解压后的文件也相同**
+
+**如果需要修改数据库连接信息，请修改以下内容**
+
+```
+打开apollo-adminservice文件夹下->config->application-github.properties修改数据库连接信息
+```
+
+![1539153001275](C:\Users\IBM_AD~1\AppData\Local\Temp\1539153001275.png)
+
+![1539153060792](C:\Users\IBM_AD~1\AppData\Local\Temp\1539153060792.png)
+
+**apollo-portal和apollo-configservice数据库信息方式修改相同**
+
+
 
 #### 启动apollo
 
