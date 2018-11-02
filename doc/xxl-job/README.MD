@@ -16,18 +16,18 @@
 xxl-job-table.sql文件存在于xqx-xxl-job目录doc下xxl-job文件夹下，与readme.md在同目录下。
 ```
 
-![1537867550013](C:\Users\IBM_AD~1\AppData\Local\Temp\1537867550013.png)
+![1537867550013](https://ws3.sinaimg.cn/large/006tNbRwly1fwspo2n5mfj30ib0760ti.jpg)
 
 
 导入步骤
 
 1、输入mysql -u root -p进入到mysql数据库
 
-![1537840832521](C:\Users\IBM_AD~1\AppData\Local\Temp\1537840832521.png)
+![1537840832521](https://ws1.sinaimg.cn/large/006tNbRwly1fwspnybw0zj30hy05xq47.jpg)
 
 2、输入source 文件路径，按回车键
 
-![1537840928898](C:\Users\IBM_AD~1\AppData\Local\Temp\1537840928898.png)
+![1537840928898](https://ws2.sinaimg.cn/large/006tNbRwly1fwspnzaaqbj30ao04vweu.jpg)
 
 3、导入完成后查看导入的表是否导入正确;
 
@@ -35,7 +35,7 @@ xxl-job-table.sql文件存在于xqx-xxl-job目录doc下xxl-job文件夹下，与
 	
 	show tables;
 
-![1537841064421](C:\Users\IBM_AD~1\AppData\Local\Temp\1537841064421.png)
+![1537841064421](https://ws2.sinaimg.cn/large/006tNbRwly1fwspo5g7ewj30f40bvmz1.jpg)
 
 一共导入16张表，数据库导入完成。
 
@@ -49,23 +49,23 @@ xxl-job-table.sql文件存在于xqx-xxl-job目录doc下xxl-job文件夹下，与
 xxl-job-admin-0.0.1-SNAPSHOT.jar放到了/home/xxl-job/目录下
 ```
 
-![1537844282718](C:\Users\IBM_AD~1\AppData\Local\Temp\1537844282718.png)
+![1537844282718](https://ws4.sinaimg.cn/large/006tNbRwly1fwspo0asyrj30ei0100sq.jpg)
 
 2、启动调度分布中心
 
 	输入nohup java -jar xxl-job-admin-0.0.1-SNAPSHOT.jar 回车即可。
 
-![1537853707566](C:\Users\IBM_AD~1\AppData\Local\Temp\1537853707566.png)
+![1537853707566](https://ws2.sinaimg.cn/large/006tNbRwly1fwspo4wkqfj30jc01bwel.jpg)
 
 3、访问调度中心
 
 	在浏览器地址输入调度中心地址http://9.186.54.96:9060/  使用admin/admin登录
 
-![1537853887614](C:\Users\IBM_AD~1\AppData\Local\Temp\1537853887614.png)
+![1537853887614](https://ws2.sinaimg.cn/large/006tNbRwly1fwspo24qdhj30wt0ilt9n.jpg)
 
 进入到一下页面，即启动成功。
 
-![1537854076688](C:\Users\IBM_AD~1\AppData\Local\Temp\1537854076688.png)
+![1537854076688](https://ws1.sinaimg.cn/large/006tNbRwly1fwspo1ey5dj30zi0q841v.jpg)
 
 ### 在阿波罗（apollo）平台上配置项目
 
@@ -75,17 +75,17 @@ xxl-job-admin-0.0.1-SNAPSHOT.jar放到了/home/xxl-job/目录下
 
 填写xxl-job-admin项目信息，点击提交，完成创建。
 
-![1537858176467](C:\Users\IBM_AD~1\AppData\Local\Temp\1537858176467.png)
+![1537858176467](https://ws2.sinaimg.cn/large/006tNbRwly1fwspnztj5oj30mf0bvt9g.jpg)
 
 __配置xxl-job-admin相关信息__
 
 创建完成之后，点击xxl-job-admin，进入到配置页面。
 
-![1537858764031](C:\Users\IBM_AD~1\AppData\Local\Temp\1537858764031.png)
+![1537858764031](https://ws1.sinaimg.cn/large/006tNbRwly1fwspo6rttsj30zk0cnjte.jpg)
 
 点击文本和修改配置，配置信息。
 
-![1537858883680](C:\Users\IBM_AD~1\AppData\Local\Temp\1537858883680.png)
+![1537858883680](https://ws4.sinaimg.cn/large/006tNbRwly1fwspnw3ps3j30zk0iw0wb.jpg)
 
 ``` properties
 server.port = 9060           ###调度中心端口号
@@ -117,17 +117,17 @@ mybatis.configuration.map-underscore-to-camel-case = true  ###开启驼峰命名
 
 2、创建xqx-job-handler项目，点击提交，完成创建。
 
-![1537865010063](C:\Users\IBM_AD~1\AppData\Local\Temp\1537865010063.png)
+![1537865010063](https://ws1.sinaimg.cn/large/006tNbRwly1fwspnyw5vej30ml0bxmxx.jpg)
 
 __配置xqx-job-handler相关信息__
 
 创建完成之后，点击xqx-job-handler，进入到配置页面。
 
-![1537865055642](C:\Users\IBM_AD~1\AppData\Local\Temp\1537865055642.png)
+![1537865055642](https://ws1.sinaimg.cn/large/006tNbRwly1fwspnxy1q3j30zh09dabb.jpg)
 
 点击文本和修改配置，配置信息。
 
-![1537865127244](C:\Users\IBM_AD~1\AppData\Local\Temp\1537865127244.png)
+![1537865127244](https://ws4.sinaimg.cn/large/006tNbRwly1fwspo0q3rdj30sr0cd76o.jpg)
 
 ```properties
 server.port = 8096     ###系统端口，访问端口
@@ -154,17 +154,17 @@ xxl.job.executor.logretentiondays = -1        ###日志保存天数，值大于3
 
 3、创建xqx-job1项目，点击提交，完成创建。
 
-![1537864342372](C:\Users\IBM_AD~1\AppData\Local\Temp\1537864342372.png)
+![1537864342372](https://ws2.sinaimg.cn/large/006tNbRwly1fwspo6dvh0j30mj0bx750.jpg)
 
 __配置xxl-job-admin相关信息__
 
 点击xqx-job1，进入到xqx-job1配置页面
 
-![1537864513224](C:\Users\IBM_AD~1\AppData\Local\Temp\1537864513224.png)
+![1537864513224](https://ws1.sinaimg.cn/large/006tNbRwly1fwspo3kb5tj30zi085q43.jpg)
 
 点击文本和修改配置，配置信息
 
-![1537864627734](C:\Users\IBM_AD~1\AppData\Local\Temp\1537864627734.png)
+![1537864627734](https://ws3.sinaimg.cn/large/006tNbRwly1fwspo4ikoij30sn0bp0up.jpg)
 
 ``` properties
 server.port = 8091  ###系统端口，访问端口
@@ -207,7 +207,7 @@ xxl.job.executor.port=8081 需要修改   ### 例如：xqx-job2：8082； xqx-jo
 
 找到启动类XqxGatewayApplication右键->Run As->Spring Boot App
 
-![1537854872579](C:\Users\IBM_AD~1\AppData\Local\Temp\1537854872579.png)
+![1537854872579](https://ws3.sinaimg.cn/large/006tNbRwly1fwspo31wjwj30mn0m6jw9.jpg)
 
 2、启动Handler项目
 
@@ -215,11 +215,11 @@ xxl.job.executor.port=8081 需要修改   ### 例如：xqx-job2：8082； xqx-jo
 
 __app.id的值和apollo创建xqx-job-handler的应用id相对应__
 
-![1537866038598](C:\Users\IBM_AD~1\AppData\Local\Temp\1537866038598.png)
+![1537866038598](https://ws4.sinaimg.cn/large/006tNbRwly1fwspo3y33zj30o007b0tj.jpg)
 
 找到启动类ClientHandlerApplication右键->Run As->Spring Boot App
 
-![1537855048184](C:\Users\IBM_AD~1\AppData\Local\Temp\1537855048184.png)
+![1537855048184](https://ws2.sinaimg.cn/large/006tNbRwly1fwspnwz37pj30np0j80xe.jpg)
 
 3、启动xqx-job1项目
 
@@ -227,14 +227,14 @@ __app.id的值和apollo创建xqx-job-handler的应用id相对应__
 
 __app.id的值和apollo创建xqx-job1的应用id相对应__
 
-![1537866423031](C:\Users\IBM_AD~1\AppData\Local\Temp\1537866423031.png)
+![1537866423031](https://ws4.sinaimg.cn/large/006tNbRwly1fwspo1rhn6j30lo08a3zd.jpg)
 
 找到启动类XqxOauthApplication右键->Run As->Spring Boot App
 
-![1537855365529](C:\Users\IBM_AD~1\AppData\Local\Temp\1537855365529.png)
+![1537855365529](https://ws2.sinaimg.cn/large/006tNbRwly1fwspnxettpj30n10mdgqa.jpg)
 
 ### 其他相关配置
 
 __xqx-job2、xqx-job3、xqx-job4、xqx-job5的配置以及启动方式和xqx-job1相同__
 
-![1537933366303](C:\Users\IBM_AD~1\AppData\Local\Temp\1537933366303.png)
+![1537933366303](https://ws1.sinaimg.cn/large/006tNbRwly1fwspo614m9j30zk08vmyd.jpg)
